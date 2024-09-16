@@ -10,17 +10,7 @@
 <body>
     
     <div id="navbar-container"></div>
-    <script>
-        // Vérifiez si l'utilisateur est connecté (vous devrez implémenter cette logique)
-        function isLoggedIn() {
-            // Pour cet exemple, nous utiliserons une variable de session simple
-            return sessionStorage.getItem('isLoggedIn') === 'true';
-        }
     
-        if (!isLoggedIn()) {
-            window.location.href = './html/login.html';
-        }
-    </script>
     
     <section id="apropos">
         <div class="container">
@@ -37,8 +27,12 @@
             mais j'aime aussi les nouvelles technologies et ce qui a trait à <span class="text-apropos-couleur">l'UI</span>.
         </p>
         <p class="text-apropos">
-            <span class="text-apropos-couleur">Le front</span> : j'ai découvert le developpement surtout avec le front end. 
-            J'apprecie aussi le back end pour ce qu'il me permet de faire mais je préfère tout de même le front.
+            <span class="text-apropos-couleur">Le front</span> : j'ai découvert le developpement web avec le front, 
+            j'ai donc plus d'attache au front que le back.
+        </p>
+        <p class="text-apropos">
+            <span class="text-apropos-couleur">Le back</span> : Au fur et à mesure de mes recherches,
+            je deviens tout autant intéressé par le back que le front pour le developpement web
         </p>
         <p class="text-apropos">
             Curieux de nature, j'aime apprendre et l'informatique est le terrain de jeu parfait pour cela ! 
@@ -50,6 +44,5 @@
 
     <div id="footer-container"></div>
     <script src="js/script.js"></script>
-    <script src="js/login.js"></script>
 </body>
 </html>
