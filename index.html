@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="image/code.png" type="image/png">
+</head>
+<body>
+    
+    <div id="navbar-container"></div>
+    <script>
+        // Vérifiez si l'utilisateur est connecté (vous devrez implémenter cette logique)
+        function isLoggedIn() {
+            // Pour cet exemple, nous utiliserons une variable de session simple
+            return sessionStorage.getItem('isLoggedIn') === 'true';
+        }
+    
+        if (!isLoggedIn()) {
+            window.location.href = './html/login.html';
+        }
+    </script>
+    
+    <section id="apropos">
+        <div class="container">
+            <div class="part-text">
+                <h1 class="title-apropos">Léo Desmoulins</h1>
+                <p class="subtitle-apropos">Développeur Web</p> 
+                <p class="etude-apropos">Étudiant en BTS SIO</p>
+            </div>
+        </div>
+        <h1 class="title2-apropos">A propos de moi</h1>
+        <hr class="hr-apropos">
+        <p class="text-apropos">
+            Salut, moi c'est léo, jeune développeur passionné par le developpement. J'adore le developpement web, 
+            mais j'aime aussi les nouvelles technologies et ce qui a trait à <span class="text-apropos-couleur">l'UI</span>.
+        </p>
+        <p class="text-apropos">
+            <span class="text-apropos-couleur">Le front</span> : j'ai découvert le developpement surtout avec le front end. 
+            J'apprecie aussi le back end pour ce qu'il me permet de faire mais je préfère tout de même le front.
+        </p>
+        <p class="text-apropos">
+            Curieux de nature, j'aime apprendre et l'informatique est le terrain de jeu parfait pour cela ! 
+            Il me reste encore beaucoup (énormement) de chose à apprendre, 
+            mais je suis prêt à lire toute les documentations pour m'améliorer.
+        </p>
+    </section>
+    
+
+    <div id="footer-container"></div>
+    <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
