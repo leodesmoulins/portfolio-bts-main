@@ -9,7 +9,13 @@
     <script src="js/login.js"></script>
 </head>
 <body>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!sessionStorage.getItem('isLoggedIn')) {
+                window.location.href = './html/login.html'; // Chemin vers la page de connexion
+            }
+        });
+    </script>
     <div id="navbar-container"></div>
     
     
