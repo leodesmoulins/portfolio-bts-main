@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Charger la navbar et le footer
     Promise.all([
-      loadHTML('navbar-container', '../html/navbar.html'),
-      loadHTML('footer-container', '../html/footer.html')
+      loadHTML('navbar-container', '../html/navbar.html')
+      
     ]).then(() => {
       const hamburger = document.querySelector(".hamburger");
       const navBar = document.querySelector(".nav-bar");
