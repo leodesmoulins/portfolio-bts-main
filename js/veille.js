@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.href = article.url; // Make the whole card a link
         card.target = '_blank'; // Open in a new tab
         card.innerHTML = `
+            <img src="${article.image || 'default-image.jpg'}" alt="${article.title}" />
             <div class="card__body">
                 <h2 class="card__title">${article.title}</h2>
                 <p class="card__description">${article.description || 'Pas de description disponible.'}</p>
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchDevToArticles() {
-        return fetch('https://dev.to/api/articles?tag=vuejs')
+        return fetch('https://dev.to/api/articles?tag=javascript') // Exemple : mise à jour du tag
             .then(response => response.json())
             .then(data => data.map(article => ({
                 title: article.title,
@@ -30,31 +31,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchMediumArticles() {
-        return Promise.resolve([
-            {
-                title: "Vue.js en 2024",
-                description: "Les dernières nouveautés de Vue.js",
-                url: "https://medium.com/article-vuejs-2024",
-                source: "Medium"
-            },
-            {
-                title: "Débuter avec Vue 3",
-                description: "Guide complet pour les débutants",
-                url: "https://medium.com/article-vue3-debutants",
-                source: "Medium"
-            }
-        ]);
+        return fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/tag/vuejs') // Exemple : flux RSS Medium
+            .then(response => response.json())
+            .then(data => data.items.map(article => ({
+                title: article.title,
+                description: article.description,
+                url: article.link,
+                source: 'Medium'
+            })));
     }
 
     function fetchCssTricksArticles() {
-        return Promise.resolve([
-            {
-                title: "Vue.js et CSS : Meilleures pratiques",
-                description: "Comment optimiser votre CSS avec Vue.js",
-                url: "https://css-tricks.com/vuejs-css-best-practices",
-                source: "CSS-Tricks"
-            }
-        ]);
+        return fetch('https://api.rss2json.com/v1/api.json?rss_url=https://css-tricks.com/feed/') // Exemple : flux RSS CSS-Tricks
+            .then(response => response.json())
+            .then(data => data.items.map(article => ({
+                title: article.title,
+                description: article.description,
+                url: article.link,
+                source: 'CSS-Tricks'
+            })));
     }
 
     function fetchVueBlogArticles() {
@@ -92,15 +87,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-   Promise.all([
-       fetchDevToArticles(),
-       fetchMediumArticles(),
-       fetchCssTricksArticles(),
-       fetchVueBlogArticles()
-   ])
-   .then(results => {
-       allArticles = results.flat();
-       displayArticles(allArticles);
-   })
-   .catch(error => console.error('Erreur lors de la récupération des articles:', error));
+    window.refreshArticles = function refreshArticles() {
+        Promise.all([
+            fetchDevToArticles(),
+            fetchMediumArticles(),
+            fetchCssTricksArticles(),
+            fetchVueBlogArticles()
+        ])
+        .then(results => {
+            allArticles = results.flat(); // Met à jour la liste des articles
+            displayArticles(allArticles); // Réaffiche les articles
+        })
+        .catch(error => console.error('Erreur lors de la mise à jour des articles:', error));
+    };
+
+    // Charger les articles au démarrage
+    refreshArticles();
 });

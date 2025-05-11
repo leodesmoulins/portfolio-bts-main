@@ -400,14 +400,22 @@
   }
   
   .card {
-    background-color: var(--background-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 15px;
-    width: 300px;
-    padding: 20px;
-    text-align: center;
-  }
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    transition: transform 0.2s ease;
+}
+
+.card img {
+  width: 100%; /* L'image occupe toute la largeur de la carte */
+  height: 200px; /* Hauteur fixe pour uniformiser les cartes */
+  object-fit: cover; /* Recadre l'image pour qu'elle remplisse l'espace sans déformation */
+  border-radius: 8px 8px 0 0; /* Coins arrondis en haut */
+}
   
   .card, 
   .projet-card {
@@ -418,6 +426,30 @@
   .projet-card:hover {
     transform: scale(1.05); /* Augmente légèrement la taille des cartes */
   }
+
+  .card:hover {
+    transform: translateY(-5px);
+}
+
+.card__body {
+    padding: 15px;
+}
+
+.card__title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.card__description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.card__source {
+    font-size: 0.8em;
+    color: #888;
+}
   
   .card-icon svg {
     width: 50px;
